@@ -104,7 +104,7 @@ function Database() {
 			fi
 		;;
 		"update")
-			sqlite3 "${GRAVITYDB}"  "UPDATE domainlist_by_group SET group_id=${GROUPID} WHERE domainlist_id IN (SELECT id FROM domainlist WHERE comment = 'Blacklisted by ytadsblocker');" 2>>  $YTADSBLOCKER_LOG 
+			sqlite3 "${GRAVITYDB}"  "UPDATE domainlist_by_group SET group_id=0 WHERE domainlist_id IN (SELECT id FROM domainlist WHERE comment = 'Blacklisted by ytadsblocker');" 2>>  $YTADSBLOCKER_LOG 
 		;;
 		"getGroupId")
 			GROUPID=$(sqlite3 "${GRAVITYDB}"  "SELECT id FROM 'group' WHERE name = 'YTADSBLOCKER';" 2>>  $YTADSBLOCKER_LOG )
